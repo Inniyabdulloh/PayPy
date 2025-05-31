@@ -2,13 +2,17 @@ from . import forms, service, models
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 class HomePageView(View, LoginRequiredMixin):
     def get(self, request):
         return render(request, 'user/home.html')
 
+
+class DocumentationView(View):
+    def get(self, request):
+        return render(request, 'user/documentation.html')
 
 class UserRegisterView(View):
     def get(self, request):
@@ -35,6 +39,11 @@ class UserLoginView(View):
             messages.error(request, "Login yoki parol noto‘g‘ri")
             return render(request, 'user/sign-in.html')
 
+
+class UserLoguotView(View, LoginRequiredMixin):
+    def get(self, request):
+        logout(request)
+        return redirect('user:sign-in')
 
 class TokenListView(View, LoginRequiredMixin):
     def get(self, request):

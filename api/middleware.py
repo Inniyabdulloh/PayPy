@@ -16,7 +16,8 @@ class TokenCheckMiddleware:
 
     def is_valid_token(self, token):
         try:
-            return Token.objects.get(key=token)
+            token = Token.objects.get(key=token)
+            return token.status
         except:
             return False
 

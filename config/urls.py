@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import check_user_is_authenticated
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', check_user_is_authenticated, name='check-authenticated'),
     path('api/', include('api.urls')),
     path('user/', include('user.urls')),
     path('card/', include('card.urls')),

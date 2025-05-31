@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .readme-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-top: 1.5rem;
+        }
+        hr {
+            margin: 2rem 0;
+        }
+        pre {
+            background: #f1f3f5;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .note {
+            font-style: italic;
+            color: #6c757d;
+        }
+        .api-endpoint {
+            background: #e9ecef;
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            margin-bottom: 0.7rem;
+        }
+        a.github-link {
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a.github-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock css %}
+{% block content %}
+    <div class="readme-container">
+        <h1 class="text-primary">PayPy</h1>
+        <p><strong>PayPy</strong> — test loyihalarda sun'iy (simulyatsiya qilingan) to‘lov tizimidan foydalanish uchun bepul API xizmati.</p>
+        <hr />
+
+        <h2>🔧 Texnologiyalar</h2>
+        <ul>
+            <li><strong>Python</strong></li>
+            <li><strong>Django, drf</strong></li>
+            <li><strong>HTML / CSS / SCSS</strong></li>
+            <li><strong>Bootstrap</strong></li>
+            <li><strong>JavaScript</strong></li>
+            <li><strong>SQLite</strong></li>
+        </ul>
+        <hr />
+
+        <h2>🚀 Maqsad</h2>
+        <p>
+            Loyihalar qilishni endi boshlagan yangi dasturchilar (Backendchilar ham Frontendchilar ham) odatda Online Market loyihasini qilib ko'rishadi.
+            Ko'p hollarda bu loyihalarning o'z to'lov tizimi bo'lmaydi. Ya'ni online marketdagi mahsulotlarni tanlab sotib olishda to'lov tizimi ishlamaydi.
+            Bu muammoga yechim berish maqsadida shu loyihani ishlab chiqdim.
+        </p>
+        <hr />
+
+        <h2>📄 Foydalanish qo'llanmasi</h2>
+        <p class="note">🕒 Eslatma: Hozirda loyiha serverga joylanmagan.</p>
+        <p>
+            Loyihaning saytida (hozircha serverga joylanman) ro'yhatdan o'ting. Saytdagi <strong>Token</strong> bo'limida loyihangiz uchun token yaratib oling.
+            Saytdagi <strong>Card</strong> bo'limida esa lohiyangizning to'lov qismida foydalanish uchun Kartalar yaratib olishingiz mumkin.
+            Token va Kartalardan foydalanish uchun hozirda mavjud API to'plami:
+        </p>
+        <div>
+            <div class="api-endpoint">GET /api/&lt;token&gt;/card/detail/&lt;karta-raqami&gt;/</div>
+            <p>Kartaga oid ma'lumotlarni ko‘rish.</p>
+
+            <div class="api-endpoint">GET /api/&lt;token&gt;/card/free-money/&lt;karta-raqami&gt;/</div>
+            <p>Karta balansiga test uchun 1 000 000 so‘m qo‘shadi.</p>
+
+            <div class="api-endpoint">POST /api/&lt;token&gt;/card/transaction/</div>
+            <p>Bir kartadan boshqasiga pul o‘tkazish.</p>
+            <p><strong>Body:</strong></p>
+            <ul>
+                <li><code>from_card</code>: yuboruvchi karta raqami</li>
+                <li><code>to_card</code>: qabul qiluvchi karta raqami</li>
+                <li><code>amount</code>: yuboriladigan summa</li>
+            </ul>
+        </div>
+        <blockquote class="blockquote border-start border-4 border-danger ps-3 mt-3">
+            <p class="mb-0">⚠️ Diqqat: Ushbu API xizmatidagi karta raqamlari va pul mablag‘lari faqat test maqsadida yaratilgan bo‘lib, ular real to‘lov tizimlarida ishlamaydi.</p>
+        </blockquote>
+
+        <hr />
+
+        <h2>🤝 Hissa qo‘shish</h2>
+        <p>
+            Agar siz ushbu loyihaga o‘z hissangizni qo‘shmoqchi bo‘lsangiz, pull request yuborishingiz mumkin.
+            Taklif va savollar uchun
+            <a href="https://github.com/Inniyabdulloh" target="_blank" rel="noopener noreferrer" class="github-link">
+                GitHub profilim
+            </a> orqali bog‘lanishingiz mumkin.
+        </p>
+    </div>
+{% endblock content %}
+
+

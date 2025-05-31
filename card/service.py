@@ -32,7 +32,10 @@ def get_user_card(user: models.CustomUser, card_id: int):
 
 def get_card_with_card_number(card_number: int):
     try:
-        return models.Card.objects.get(number=card_number)
+        card = models.Card.objects.get(number=card_number)
+        if card.status:
+            return card
+        return False
     except:
         return False
 

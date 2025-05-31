@@ -5,8 +5,8 @@ from rest_framework.views import APIView, Response
 # Create your views here.
 
 class CardDetailApiView(APIView):
-    def get(self, request, token, card_id):
-        card = service.get_card_with_id(card_id)
+    def get(self, request, token, card_number):
+        card = card_service.get_card_with_card_number(card_number)
 
         if card is False:
             return Response({'error': "Card does not exist"})
