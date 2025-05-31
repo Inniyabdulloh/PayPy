@@ -17,7 +17,7 @@ class UserRegisterView(View):
     def post(self, request):
         form = forms.UserRegisterForm(request.POST)
         user = service.create_user(form)
-        print(user)
+
         if user:
             return redirect('user:sign-in')
         return redirect('user:sign-up')

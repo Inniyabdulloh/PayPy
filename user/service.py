@@ -1,4 +1,8 @@
 from . import forms, utils, models
+from django.http import HttpRequest
+
+def get_user_from_db(request: HttpRequest):
+    return models.CustomUser.objects.get(id=request.user.id)
 
 def create_user(form: forms.UserRegisterForm):
     if form.is_valid():
@@ -31,3 +35,5 @@ def switch_status_of_token(user, token):
         else:
             token.status = True
         token.save()
+
+
